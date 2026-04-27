@@ -1,0 +1,19 @@
+.card_insight {
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 200px;
+    align-items: center;
+    padding: 16px;
+    background-color: aqua;
+
+
+}
+
+.texto_titulo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.texto_descricao {
+    font-size: 15px;
+}
