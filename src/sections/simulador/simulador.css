@@ -1,5 +1,5 @@
 .simulador_page{
-    background-color: blueviolet;
+    background-color: var(--cor-marrom);
     flex-direction: column;
     text-align: center;
     align-items: center;
