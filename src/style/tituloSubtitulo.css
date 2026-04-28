@@ -1,9 +1,7 @@
-
-
 .h1_titulo{
-    color: red;    
+    color: var(--cor-escuro-fundo);    
 }
 
 .p_subtitulo{
-    color: red;
+    color: var(--cor-escuro-fundo-secundario);
 }

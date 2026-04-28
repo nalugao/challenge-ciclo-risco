@@ -1,0 +1,16 @@
+.insights_page {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 850px;
+    background-color: brown;
+}
+
+.cards_container {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 200px 200px;
+    gap: 16px;
+    justify-content: center;
+}

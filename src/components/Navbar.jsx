@@ -1,18 +1,34 @@
+import { useState } from 'react'
 import '../style/navbar.css'
 
 export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false)
+
     return (
         <>
             <nav className="navbar">
-                    <p>Ciclo de Risco</p>
-                    <ul className="menu_list">
-                        <li>Painel</li>
-                        <li>Mapa Corporal</li>
-                        <li>Simulador</li>
-                        <li>Insights</li>
-                        <li>Login</li>
-                    </ul>
+                <a className="logo" href="#">
+                    <span className="logo-dot" />
+                    <span className="logo-text">Ciclo de Risco</span>
+                </a>
+                <ul className="menu_list">
+                    <li><a href="#painel">Painel</a></li>
+                    <li><a href="#mapa-corporal">Mapa Corporal</a></li>
+                    <li><a href="#simulador">Simulador</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a className="btn-login" href="/login">Login</a></li>
+                </ul>
+                <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+                    <span /><span /><span />
+                </div>
             </nav>
+            <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+                <a href="#painel">Painel</a>
+                <a href="#mapa-corporal">Mapa Corporal</a>
+                <a href="#simulador">Simulador</a>
+                <a href="#insights">Insights</a>
+                <a className="btn-login" href="/login">Login</a>
+            </div>
         </>
     )
-};
+}
