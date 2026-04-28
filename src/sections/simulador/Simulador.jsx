@@ -12,6 +12,9 @@ export default function Simulador() {
         <section id="simulador" className="simulador_page">
             <TituloSubtitulo titulo={simulatorData.titulo} subtitulo={simulatorData.subtitulo} variante={simulatorData.variante}/>
             {/* INSERIR O SIMULADOR AQUI */}
+            <div className="simulador">
+                <p>Simulador</p>
+            </div>
         </section>
     )
 }
