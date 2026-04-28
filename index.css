@@ -4,3 +4,13 @@
     padding: 0;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+:root {
+    --cor-vermelho: #E24B4A;
+    --cor-marrom: #a52a2a;
+    --cor-escuro-fundo: #0a0a0a;
+    --cor-escuro-fundo-secundario: #1a1a1a;
+    --cor-texto: #ffffff;
+    --cor-texto-suave: #aaaaaa;
+    --cor-borda: #1f1f1f;
+}
