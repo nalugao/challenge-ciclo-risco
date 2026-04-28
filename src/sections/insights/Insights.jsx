@@ -6,7 +6,8 @@ import Navbar from "../../components/Navbar";
 export default function Insights() {
     const insightsData={
         titulo: "Principais Insights",
-        subtitulo: "O que os dados nos dizem sobre os riscos dos esteroides anabolizantes."
+        subtitulo: "O que os dados nos dizem sobre os riscos dos esteroides anabolizantes.",
+        variante: "claro"
     }
 
     const cardsInsights={
@@ -27,7 +28,7 @@ export default function Insights() {
 
     return(
         <section id="insights" className="insights_page">
-            <TituloSubtitulo titulo={insightsData.titulo} subtitulo={insightsData.subtitulo}/>
+            <TituloSubtitulo titulo={insightsData.titulo} subtitulo={insightsData.subtitulo} variante={insightsData.variante}/>
 
             <div className="cards_container">
                 <CardInsight titulo={cardsInsights.correlacao.titulo} descricao={cardsInsights.correlacao.descricao}/>

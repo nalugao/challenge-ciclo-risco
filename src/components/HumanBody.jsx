@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import '../style/humanBody.css'
-/* ─── SVG path data (from the original scaffold) ──────────────────────────── */
+import TituloSubtitulo from "./TituloSubtitulo";
 
 const HEAD =
   "M15.92 68.5l8.8 12.546 3.97 13.984-9.254-7.38-4.622-15.848zm27.1 0l-8.8 12.546-3.976 13.988 9.254-7.38 4.622-15.848zm6.11-27.775l.108-11.775-21.16-14.742L8.123 26.133 8.09 40.19l-3.24.215 1.462 9.732 5.208 1.81 2.36 11.63 9.72 11.018 10.856-.324 9.56-10.37 1.918-11.952 5.207-1.81 1.342-9.517zm-43.085-1.84l-.257-13.82L28.226 11.9l23.618 15.755-.216 10.37 4.976-17.085L42.556 2.376 25.49 0 10.803 3.673.002 24.415z";
@@ -25,16 +25,15 @@ const HANDS =
 
 // Master-SVG (x, y) offsets per body piece. Center axis: x = 125.
 const BODY_PARTS = [
-  { id: "head",     d: HEAD,     x: 97, y: 0   },
-  { id: "shoulder", d: SHOULDER, x: 70, y: 90  },
-  { id: "arm",      d: ARM,      x: 47, y: 100 },
-  { id: "chest",    d: CHEST,    x: 82, y: 132 },
-  { id: "stomach",  d: STOMACH,  x: 87, y: 175 },
-  { id: "hands",    d: HANDS,    x: 22, y: 220 },
-  { id: "legs",     d: LEGS,     x: 78, y: 270 },
+  { id: "head", d: HEAD, x: 97, y: 0 },
+  { id: "shoulder", d: SHOULDER, x: 70, y: 90 },
+  { id: "arm", d: ARM, x: 47, y: 100 },
+  { id: "chest", d: CHEST, x: 82, y: 132 },
+  { id: "stomach", d: STOMACH, x: 87, y: 175 },
+  { id: "hands", d: HANDS, x: 22, y: 220 },
+  { id: "legs", d: LEGS, x: 78, y: 270 },
 ];
 
-/* ─── Pain points (cx/cy in master-SVG coords: viewBox 0 0 250 580) ──────── */
 
 const CONDITIONS = [
   {
@@ -87,8 +86,6 @@ const CONDITIONS = [
   },
 ];
 
-/* ─── Self-contained X icon (no lucide-react dependency) ──────────────────── */
-
 function CloseIcon() {
   return (
     <svg
@@ -108,32 +105,6 @@ function CloseIcon() {
   );
 }
 
-/* ─── Scoped styles. Everything namespaced under .hbd-* ───────────────────── */
-
-
-/* ─── Component ──────────────────────────────────────────────────────────── */
-
-/**
- * BodyRiskMap
- *
- * A self-contained, drop-in component. It fills 100% of its parent's box and
- * never overflows. The parent is responsible for giving it dimensions —
- * either by being a flex/grid item with a defined size, or by setting an
- * explicit height on it via `className` or `style`.
- *
- * Usage:
- *   <section style={{ height: "100vh" }}>
- *     <BodyRiskMap />
- *   </section>
- *
- *   <BodyRiskMap style={{ height: 600 }} />
- *
- *   <BodyRiskMap className="my-custom-class" />
- *
- * @param {object}  props
- * @param {string} [props.className]  Extra classes for the outer container.
- * @param {object} [props.style]      Inline styles for the outer container.
- */
 export default function BodyRiskMap({ className = "", style }) {
   const [selectedId, setSelectedId] = useState("heart");
   const selected = CONDITIONS.find((c) => c.id === selectedId);
@@ -142,6 +113,7 @@ export default function BodyRiskMap({ className = "", style }) {
 
   return (
     <>
+
       <div className={rootClass} style={style}>
         {/* Header */}
         <div className="hbd-header">
