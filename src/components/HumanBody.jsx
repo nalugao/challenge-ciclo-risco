@@ -111,15 +111,9 @@ export default function BodyRiskMap({ className = "", style }) {
 
   const rootClass = className ? `hbd-root ${className}` : "hbd-root";
 
-  const mapaData = {
-    titulo: "Impacto no seu corpo",
-    subtitulo: "Clique em cada órgão para saber como os esteroides anabolizantes o afetam.",
-    variante: "escuro"
-  }
-
   return (
     <>
-      <TituloSubtitulo titulo={mapaData.titulo} subtitulo={mapaData.subtitulo} variante={mapaData.variante} />
+
       <div className={rootClass} style={style}>
         {/* Header */}
         <div className="hbd-header">

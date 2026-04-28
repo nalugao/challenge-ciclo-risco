@@ -1,10 +1,15 @@
 .mapa_corporal_page {
-    background-color: #0a0a0a;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
     flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    height: 850px;
+    background-color: #0a0a0a;
+}
+
+.hbd-root {
+    flex: 1;
+    min-height: 0;
+    height: calc(100vh - 160px); /* desconta o título */
 }
 
 .titulo_bloco--escuro .h2_titulo { color: #ffffff; }
