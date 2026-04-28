@@ -1,8 +1,11 @@
 .mapa_corporal_page {
-    background-color: black;
+    background-color: #0a0a0a;
     flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
     height: 850px;
 }
+
+.titulo_bloco--escuro .h2_titulo { color: #ffffff; }
+.titulo_bloco--escuro .p_subtitulo { color: #888888; }

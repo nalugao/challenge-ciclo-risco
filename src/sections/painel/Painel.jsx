@@ -7,7 +7,8 @@ import Navbar from "../../components/Navbar"
 export default function Painel() {
     const painelData = {
         titulo: "Os dados por trás do uso de anabolizantes",
-        subtitulo: "Padrões de dados reais mostrando o impacto crescente do uso indevido de esteroides anabolizantes."
+        subtitulo: "Padrões de dados reais mostrando o impacto crescente do uso indevido de esteroides anabolizantes.",
+        variante: "claro"
     }
 
     const cardsInfo = {
@@ -57,7 +58,7 @@ export default function Painel() {
 
     return (
         <section id="painel" className="painel_page">
-            <TituloSubtitulo titulo={painelData.titulo} subtitulo={painelData.subtitulo} />
+            <TituloSubtitulo titulo={painelData.titulo} subtitulo={painelData.subtitulo} variante={painelData.variante} />
             <div className="card_container">
                 <CardPainel icone={cardsInfo.usuariosAtivos.icone} alt={cardsInfo.usuariosAtivos.alt} estatistica={cardsInfo.usuariosAtivos.estatistica} descricao={cardsInfo.usuariosAtivos.descricao} />
                 <CardPainel icone={cardsInfo.mortalidade.icone} alt={cardsInfo.mortalidade.alt} estatistica={cardsInfo.mortalidade.estatistica} descricao={cardsInfo.mortalidade.descricao} />

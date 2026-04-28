@@ -119,7 +119,6 @@
 .hbd-content {
     flex: 1;
     min-height: 0;
-    /* the magic that lets SVG/card actually shrink */
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
@@ -383,3 +382,6 @@
     font-weight: 300;
     color: var(--hbd-text-faint);
 }
+
+.titulo_bloco--escuro .h2_titulo { color: #ffffff; }
+.titulo_bloco--escuro .p_subtitulo { color: #888888; }
