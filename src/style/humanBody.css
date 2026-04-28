@@ -31,7 +31,7 @@
 
     flex: 1;
     min-height: 500px;
-    height: calc(100vh - 160px);
+    height: calc(100vh - 10px);
 }
 
 @media (max-width: 700px) {
@@ -173,13 +173,11 @@
     pointer-events: none;
 }
 
-/* SVG fills its container; preserveAspectRatio handles the actual fit.
-     max-width caps it on very wide screens so the body never gets gigantic. */
 .hbd-svg {
     position: relative;
     width: 100%;
     height: 100%;
-    max-width: 440px;
+    max-width: 300px;
 }
 
 .hbd-body-path {
