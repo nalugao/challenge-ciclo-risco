@@ -1,4 +1,6 @@
 import './inicio.css'
+import { Link } from 'react-router-dom'
+
 
 export default function Inicio() {
     return (
@@ -18,7 +20,7 @@ export default function Inicio() {
                 <p>Aqui você <span style={{ fontWeight: 'bold', color: '#E24B4A' }}>acompanha</span> seus exames, <span style={{ fontWeight: 'bold', color: '#E24B4A' }}>identifica</span> riscos reais e <span style={{ fontWeight: 'bold', color: '#E24B4A' }}>entende como os anabolizantes impactam seu corpo</span>, antes que esses sinais evoluam.</p>
 
                 <div className='btn_container'>
-                    <button className='btn_login'>Entrar</button>
+                    <Link className='btn_login' to={'/login'}>Entrar</Link>
                     <button
                         className='btn_dados'
                         onClick={() => document.getElementById('painel').scrollIntoView({ behavior: 'smooth' })}
