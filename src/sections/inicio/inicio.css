@@ -82,6 +82,7 @@ p {
     font-size: 14px;
     font-weight: 550;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn_login:hover {
