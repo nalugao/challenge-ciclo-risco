@@ -1,7 +1,9 @@
 import '../style/login.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function Login() {
+    const navigate = useNavigate()
+
     return (
         <div className="login_wrap">
 
@@ -50,7 +52,10 @@ export default function Login() {
 
                     <a href="#" className="forgot">Esqueci minha senha</a>
 
-                    <button className="btn_entrar">Entrar</button>
+                    <button
+                        className="btn_entrar"
+                        onClick={() => navigate('/dashboard')}
+                    >Entrar</button>
 
                     <div className="divider"><span>ou</span></div>
 
