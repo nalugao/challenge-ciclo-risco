@@ -1,7 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../style/login.css'
 
 export default function Cadastro() {
+    const navigate = useNavigate()
+
     return (
         <div className="login_wrap">
 
@@ -56,7 +58,9 @@ export default function Cadastro() {
                         <input type="password" placeholder="••••••••" />
                     </div>
 
-                    <button className="btn_entrar">Criar conta</button>
+                    <button className="btn_entrar" onClick={() => navigate('/onboarding')}>
+                        Criar conta
+                    </button>
 
                     <div className="divider"><span>ou</span></div>
 

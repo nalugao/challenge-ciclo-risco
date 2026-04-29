@@ -5,6 +5,8 @@ import Cadastro from './pages/Cadastro'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Perfil from './pages/Perfil'
+import Onboarding from './pages/Onboarding'
+
 
 export default function App() {
     return (
@@ -19,6 +21,8 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/perfil" element={<Perfil />} />
+            <Route path="/onboarding" element={<Onboarding />} />
+
         </Routes>
     )
 }

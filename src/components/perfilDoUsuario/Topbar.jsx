@@ -10,7 +10,7 @@ export default function Topbar({ perfil }) {
                         <rect x="2" y="9" width="8" height="1.5" rx=".75" fill="white" opacity=".6" />
                     </svg>
                 </div>
-                <span className="logo-name">AnaboliTrack</span>
+                <span className="logo-name">Ciclo de Risco</span>
             </div>
 
             <div className="nav-right">
