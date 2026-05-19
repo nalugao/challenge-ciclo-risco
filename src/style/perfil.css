@@ -310,3 +310,232 @@ body {
     .metrics-row { grid-template-columns: repeat(2, 1fr); }
     .content { padding: 16px; }
 }
+
+/* Gráficos*/
+.chart-hepatico {
+  width: 100%;
+}
+
+.chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.chart-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.chart-header p {
+  color: #9ca3af;
+  margin-top: 4px;
+  font-size: 14px;
+}
+
+.badge-risco {
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.badge-risco.normal {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.badge-risco.alerta {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+}
+
+.badge-risco.critico {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.tooltip-hepatico {
+  background: #181818;
+  border: 1px solid #2f2f2f;
+  border-radius: 14px;
+  padding: 14px;
+  color: #fff;
+  min-width: 230px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.tooltip-hepatico p {
+  margin: 5px 0;
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+.tooltip-data {
+  display: block;
+  margin-bottom: 8px;
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+.tooltip-status {
+  margin: 10px 0;
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.tooltip-status.normal {
+  background: rgba(34, 197, 94, 0.15);
+  color: #22c55e;
+}
+
+.tooltip-status.alerta {
+  background: rgba(250, 204, 21, 0.15);
+  color: #facc15;
+}
+
+.tooltip-status.critico {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.tooltip-hepatico small {
+  display: block;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+.chart-insight {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chart-insight.normal {
+  background: rgba(34, 197, 94, 0.08);
+  color: #bbf7d0;
+}
+
+.chart-insight.alerta {
+  background: rgba(250, 204, 21, 0.08);
+  color: #fef3c7;
+}
+
+.chart-insight.critico {
+  background: rgba(239, 68, 68, 0.08);
+  color: #fecaca;
+}
+
+.limites-hepaticos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.limites-hepaticos span {
+  font-size: 12px;
+  color: #9ca3af;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.tooltip-simples {
+  min-width: 130px;
+  padding: 10px 12px;
+}
+
+.tooltip-simples p {
+  margin: 0;
+}
+
+.chart-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.chart-tabs button {
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: #9ca3af;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.chart-tabs button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+}
+
+.chart-tabs button.active {
+  background: rgba(59, 130, 246, 0.18);
+  color: #3b82f6;
+}
+
+.sub-chart-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sub-chart-tabs button {
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: #9ca3af;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sub-chart-tabs button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+}
+
+.sub-chart-tabs button.active {
+  background: rgba(59, 130, 246, 0.18);
+  color: #3b82f6;
+}
+
+.sub-chart-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.sub-chart-tabs button {
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: #9ca3af;
+  padding: 7px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sub-chart-tabs button:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #fff;
+}
+
+.sub-chart-tabs button.active {
+  background: rgba(59, 130, 246, 0.18);
+  color: #3b82f6;
+}
