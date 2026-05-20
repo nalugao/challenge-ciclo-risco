@@ -16,14 +16,13 @@ function calcularDelta(atual, passado) {
 }
 
 const perfil = {
-  nome: 'Rafael Mendes',
-  idade: 28,
-  sexo: 'masculino',
-  tempoUso: '14 meses',
+  nome: 'Natalia Lugao',
+  idade: 26,
+  sexo: 'feminino',
+  tempoUso: '12 meses',
   dosagem: '500mg/sem',
   esteroides: ['Testosterona Enantato', 'Trembolona', 'Oxandrolona'],
   nivelRisco: 'alto',
-  avatar: 'RM',
   ultimoExame: '12 abr 2025',
 }
 
