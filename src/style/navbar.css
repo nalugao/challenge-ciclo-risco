@@ -29,11 +29,11 @@
     text-decoration: none;
 }
 
-.logo-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--cor-vermelho);
+.logo-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
 }
 
 .logo-text {

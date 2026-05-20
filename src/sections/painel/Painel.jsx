@@ -8,7 +8,7 @@ export default function Painel() {
     const painelData = {
         titulo: "Os dados por trás do uso de anabolizantes",
         subtitulo: "Padrões de dados reais mostrando o impacto crescente do uso indevido de esteroides anabolizantes.",
-        variante: "claro"
+        variante: "escuro"
     }
 
     const cardsInfo = {

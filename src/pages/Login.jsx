@@ -54,7 +54,7 @@ export default function Login() {
 
                     <button
                         className="btn_entrar"
-                        onClick={() => navigate('/dashboard')}
+                        onClick={() => navigate('/perfil')}
                     >Entrar</button>
 
                     <div className="divider"><span>ou</span></div>

@@ -16,6 +16,9 @@
     gap: 16px;
 }
 
+.titulo_bloco--escuro .h2_titulo { color: #ffffff; }
+
+
 /* Tablet */
 @media (max-width: 900px) {
     .card_container {
