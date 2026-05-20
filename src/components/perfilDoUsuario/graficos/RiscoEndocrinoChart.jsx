@@ -11,62 +11,15 @@ import {
   Legend,
 } from 'recharts'
 
+import { MOCK_DATA } from '../../../data/mockData'
+
 const paciente = {
   sexo: 'masculino',
   idade: 24,
   faseMenstrual: 'folicular',
 }
 
-const examesEndocrinos = [
-  {
-    data: 'Jan',
-    glicose: 86,
-    hemoglobinaGlicada: 5.1,
-    testosteronaTotal: 720,
-    testosteronaLivre: 520,
-    lh: 6.1,
-    fsh: 5.2,
-    estradiol: 32,
-    prolactina: 10,
-    shbg: 38,
-  },
-  {
-    data: 'Fev',
-    glicose: 94,
-    hemoglobinaGlicada: 5.4,
-    testosteronaTotal: 1100,
-    testosteronaLivre: 820,
-    lh: 2.2,
-    fsh: 2.1,
-    estradiol: 51,
-    prolactina: 16,
-    shbg: 24,
-  },
-  {
-    data: 'Mar',
-    glicose: 103,
-    hemoglobinaGlicada: 6.2,
-    testosteronaTotal: 1450,
-    testosteronaLivre: 980,
-    lh: 0.4,
-    fsh: 0.6,
-    estradiol: 72,
-    prolactina: 22,
-    shbg: 12,
-  },
-  {
-    data: 'Abr',
-    glicose: 112,
-    hemoglobinaGlicada: 6.5,
-    testosteronaTotal: 1800,
-    testosteronaLivre: 1220,
-    lh: 0.2,
-    fsh: 0.3,
-    estradiol: 88,
-    prolactina: 28,
-    shbg: 9,
-  },
-]
+const examesEndocrinos = MOCK_DATA.chartData?.endocrino?.exames || []
 
 function getLimitesEndocrinos(sexo, idade, faseMenstrual) {
   const masculino = sexo === 'masculino'
@@ -116,7 +69,10 @@ function calcularRiscoEndocrino(exame, sexo, idade, faseMenstrual) {
   if (exame.prolactina > limites.prolactinaMax) pontos += 1
   if (exame.shbg < limites.shbgMin) pontos += 1
 
-  const eixoSuprimido = exame.lh < limites.lhMin && exame.fsh < limites.fshMin
+  const eixoSuprimido =
+    exame.lh < limites.lhMin &&
+    exame.fsh < limites.fshMin
+
   const testosteronaAlta =
     exame.testosteronaTotal > limites.testosteronaTotalMax ||
     exame.testosteronaLivre > limites.testosteronaLivreMax
@@ -128,25 +84,32 @@ function calcularRiscoEndocrino(exame, sexo, idade, faseMenstrual) {
   if (testosteronaAlta) {
     status = 'Atenção hormonal'
     classe = 'alerta'
-    insight = 'Testosterona acima da referência pode indicar uso exógeno ou dose elevada no ciclo.'
+    insight =
+      'Testosterona acima da referência pode indicar uso exógeno ou dose elevada no ciclo.'
   }
 
   if (eixoSuprimido) {
     status = 'Eixo hormonal suprimido'
     classe = 'critico'
-    insight = 'LH e FSH baixos sugerem supressão do eixo hormonal, comum durante uso de testosterona ou anabolizantes.'
+    insight =
+      'LH e FSH baixos sugerem supressão do eixo hormonal, comum durante uso de testosterona ou anabolizantes.'
   }
 
-  if (exame.glicose > limites.glicoseMax || exame.hemoglobinaGlicada > limites.hemoglobinaGlicadaMax) {
+  if (
+    exame.glicose > limites.glicoseMax ||
+    exame.hemoglobinaGlicada > limites.hemoglobinaGlicadaMax
+  ) {
     status = 'Atenção metabólica'
     classe = 'alerta'
-    insight = 'Glicose ou hemoglobina glicada elevadas podem indicar piora do controle metabólico.'
+    insight =
+      'Glicose ou hemoglobina glicada elevadas podem indicar piora do controle metabólico.'
   }
 
   if (pontos >= 6) {
     status = 'Risco endócrino alto'
     classe = 'critico'
-    insight = 'Há múltiplas alterações hormonais e metabólicas. É recomendado procurar avaliação médica.'
+    insight =
+      'Há múltiplas alterações hormonais e metabólicas. É recomendado procurar avaliação médica.'
   }
 
   return { pontos, status, classe, insight }
@@ -170,6 +133,19 @@ function TooltipEndocrino({ active, payload, label }) {
 
 export default function RiscoEndocrinoChart() {
   const [abaAtiva, setAbaAtiva] = useState('metabolico')
+
+  if (!examesEndocrinos.length) {
+    return (
+      <div className="chart-hepatico">
+        <div className="chart-header">
+          <div>
+            <h3>Risco Endócrino</h3>
+            <p>Nenhum dado endócrino encontrado no MOCK_DATA.</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   const ultimoExame = examesEndocrinos[examesEndocrinos.length - 1]
 
@@ -233,8 +209,19 @@ export default function RiscoEndocrinoChart() {
             <>
               <YAxis domain={[0, 130]} />
 
-              <ReferenceArea y1={70} y2={99} fill="#22c55e" fillOpacity={0.08} />
-              <ReferenceArea y1={100} y2={130} fill="#ef4444" fillOpacity={0.08} />
+              <ReferenceArea
+                y1={70}
+                y2={99}
+                fill="#22c55e"
+                fillOpacity={0.08}
+              />
+
+              <ReferenceArea
+                y1={100}
+                y2={130}
+                fill="#ef4444"
+                fillOpacity={0.08}
+              />
 
               <Line
                 type="monotone"
@@ -260,9 +247,26 @@ export default function RiscoEndocrinoChart() {
             <>
               <YAxis domain={[0, 1900]} />
 
-              <ReferenceArea y1={253} y2={803} fill="#22c55e" fillOpacity={0.08} />
-              <ReferenceArea y1={804} y2={1200} fill="#facc15" fillOpacity={0.08} />
-              <ReferenceArea y1={1200} y2={1900} fill="#ef4444" fillOpacity={0.08} />
+              <ReferenceArea
+                y1={253}
+                y2={803}
+                fill="#22c55e"
+                fillOpacity={0.08}
+              />
+
+              <ReferenceArea
+                y1={804}
+                y2={1200}
+                fill="#facc15"
+                fillOpacity={0.08}
+              />
+
+              <ReferenceArea
+                y1={1200}
+                y2={1900}
+                fill="#ef4444"
+                fillOpacity={0.08}
+              />
 
               <Line
                 type="monotone"
@@ -306,8 +310,19 @@ export default function RiscoEndocrinoChart() {
             <>
               <YAxis domain={[0, 30]} />
 
-              <ReferenceArea y1={0.6} y2={12.1} fill="#22c55e" fillOpacity={0.08} />
-              <ReferenceArea y1={0} y2={0.6} fill="#ef4444" fillOpacity={0.08} />
+              <ReferenceArea
+                y1={0.6}
+                y2={12.1}
+                fill="#22c55e"
+                fillOpacity={0.08}
+              />
+
+              <ReferenceArea
+                y1={0}
+                y2={0.6}
+                fill="#ef4444"
+                fillOpacity={0.08}
+              />
 
               <Line
                 type="monotone"
@@ -347,25 +362,51 @@ export default function RiscoEndocrinoChart() {
       <div className="limites-hepaticos">
         {abaAtiva === 'metabolico' && (
           <>
-            <span>Glicose: {limites.glicoseMin}–{limites.glicoseMax} mg/dL</span>
-            <span>HbA1c: {limites.hemoglobinaGlicadaMin}–{limites.hemoglobinaGlicadaMax}%</span>
+            <span>
+              Glicose: {limites.glicoseMin}–{limites.glicoseMax} mg/dL
+            </span>
+
+            <span>
+              HbA1c: {limites.hemoglobinaGlicadaMin}–
+              {limites.hemoglobinaGlicadaMax}%
+            </span>
           </>
         )}
 
         {abaAtiva === 'androgenico' && (
           <>
-            <span>Test. total: {limites.testosteronaTotalMin}–{limites.testosteronaTotalMax} ng/dL</span>
-            <span>Test. livre: {limites.testosteronaLivreMin}–{limites.testosteronaLivreMax} pmol/L</span>
+            <span>
+              Test. total: {limites.testosteronaTotalMin}–
+              {limites.testosteronaTotalMax} ng/dL
+            </span>
+
+            <span>
+              Test. livre: {limites.testosteronaLivreMin}–
+              {limites.testosteronaLivreMax} pmol/L
+            </span>
+
             <span>Estradiol máx: {limites.estradiolMax} pg/mL</span>
-            <span>SHBG: {limites.shbgMin}–{limites.shbgMax} nmol/L</span>
+
+            <span>
+              SHBG: {limites.shbgMin}–{limites.shbgMax} nmol/L
+            </span>
           </>
         )}
 
         {abaAtiva === 'eixo' && (
           <>
-            <span>LH: {limites.lhMin}–{limites.lhMax} IU/L</span>
-            <span>FSH: {limites.fshMin}–{limites.fshMax} IU/L</span>
-            <span>Prolactina: {limites.prolactinaMin}–{limites.prolactinaMax} ng/mL</span>
+            <span>
+              LH: {limites.lhMin}–{limites.lhMax} IU/L
+            </span>
+
+            <span>
+              FSH: {limites.fshMin}–{limites.fshMax} IU/L
+            </span>
+
+            <span>
+              Prolactina: {limites.prolactinaMin}–
+              {limites.prolactinaMax} ng/mL
+            </span>
           </>
         )}
       </div>
