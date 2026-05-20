@@ -3,7 +3,6 @@ import Topbar from '../components/perfilDoUsuario/Topbar'
 import CardMetrica from '../components/perfilDoUsuario/CardMetrica'
 import CardChart from '../components/perfilDoUsuario/CardChart'
 import CardAlertasExamesInsights from '../components/perfilDoUsuario/CardAlertasExamesInsights'
-import CardExames from '../components/perfilDoUsuario/CardExames'
 import { MOCK_DATA } from '../data/mockData'
 import '../style/perfil.css'
 
@@ -37,10 +36,6 @@ export default function Perfil() {
                     <div className="grid-main">
                         <CardChart />
                         <CardAlertasExamesInsights alertas={alertas} />
-                    </div>
-
-                    <div className="bottom-grid">
-                        <CardExames exames={exames} />
                     </div>
                 </div>
             </div>
