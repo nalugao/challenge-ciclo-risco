@@ -15,8 +15,8 @@ const CONDICOES = [
 
 /* ─── Initial state (mirrors onboarding) ─── */
 const INITIAL = {
-    nome: 'Rafael', sobrenome: 'Mendonça', idade: '28', sexo: 'Masculino',
-    peso: '92', altura: '181',
+    nome: 'Natalia', sobrenome: 'Lugao', idade: '26', sexo: 'Feminino',
+    peso: '60', altura: '158',
     cicloAtivo: 'sim',
     compostos: ['Testosterona Enantato', 'Stanozolol'],
     dosagem: '500', tempoUso: 'Mais de 12 meses',
