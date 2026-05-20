@@ -71,31 +71,31 @@ function getContextualMessages({
   if (age <= 18) {
     msgs.push({
       severity: "danger",
-      title: "Adolescente em desenvolvimento",
-      text: "Antes dos 18 anos o eixo Hipotálamo-Hipófise-Testicular (HPT) ainda está em formação. O uso nessa fase pode causar fechamento prematuro das placas de crescimento e supressão hormonal permanente — comprometendo a produção natural de testosterona pelo resto da vida.",
+      title: "Você ainda está crescendo",
+      text: "Antes dos 18 anos, o corpo ainda está se desenvolvendo e produzindo hormônios naturalmente. Usar anabolizantes nessa fase pode parar seu crescimento mais cedo e bagunçar seu sistema hormonal de forma permanente — ou seja, seu corpo pode nunca mais produzir testosterona direito.",
     });
   }
 
   if (age > 18 && age <= 25) {
     msgs.push({
       severity: "warning",
-      title: "Sistema endócrino ainda em maturação",
-      text: "Entre 18 e 25 anos a produção natural de testosterona ainda está se estabelecendo. O uso de anabolizantes nessa janela pode suprimir o pico hormonal natural da juventude de forma irreversível, mesmo que o eixo HPT já seja considerado funcionalmente maduro.",
+      title: "Seu sistema hormonal ainda está se ajustando",
+      text: "Entre 18 e 25 anos, a testosterona natural ainda está chegando no seu pico. Usar anabolizantes agora pode interromper esse processo de forma irreversível, fazendo você perder o melhor momento hormonal da sua vida.",
     });
   }
 
   if (sex === "Feminino") {
     msgs.push({
       severity: "danger",
-      title: "Risco elevado para o sexo feminino",
-      text: "Mulheres são muito mais sensíveis a doses menores do que homens. O uso pode causar virilização — engrossamento permanente da voz, hipertrofia do clitóris e hirsutismo — além de interrupção do ciclo menstrual. Muitos desses efeitos não regridem com a interrupção do uso.",
+      title: "Risco muito maior para mulheres",
+      text: "O corpo feminino reage de forma muito mais intensa aos anabolizantes. O uso pode causar engrossamento permanente da voz, crescimento do clitóris e aparecimento de pelos no rosto e corpo, além de desregular o ciclo menstrual. O pior: muitos desses efeitos não somem mesmo se você parar.",
     });
 
     if (frequency === "Intenso") {
       msgs.push({
         severity: "danger",
-        title: "Virilização irreversível — uso intenso",
-        text: "Com uso intenso em mulheres, as chances de virilização permanente são muito elevadas. Alterações como mudança de voz e hipertrofia clitoriana não regridem mesmo após anos sem uso, pois resultam de mudanças estruturais nos tecidos.",
+        title: "Risco de masculinização permanente",
+        text: "Com uso intenso, as chances de mudanças físicas irreversíveis são altíssimas. Alterações como mudança na voz e crescimento do clitóris são permanentes porque afetam a estrutura dos tecidos — não tem como desfazer, mesmo anos depois de parar.",
       });
     }
 
@@ -103,7 +103,7 @@ function getContextualMessages({
       msgs.push({
         severity: "danger",
         title: "Combinação especialmente perigosa para mulheres",
-        text: "O uso de múltiplos compostos em mulheres multiplica o risco de virilização e distúrbios hormonais graves. Cada composto adicional eleva exponencialmente a chance de efeitos androgenizantes permanentes.",
+        text: "Usar mais de um anabolizante ao mesmo tempo multiplica o risco de masculinização e problemas hormonais graves. Cada substância a mais aumenta muito as chances de efeitos permanentes no corpo.",
       });
     }
   }
@@ -111,56 +111,56 @@ function getContextualMessages({
   if (route === "Oral") {
     msgs.push({
       severity: "warning",
-      title: "Hepatotoxicidade — compostos orais",
-      text: "Anabolizantes orais são modificados quimicamente (17-alfa alquilados) para resistir ao metabolismo hepático, causando acúmulo de toxinas no fígado. O uso prolongado pode levar a peliose hepática, colestase e, em casos graves, carcinoma hepatocelular. Monitoramento de ALT, AST e bilirrubinas é essencial.",
+      title: "Anabolizantes orais prejudicam o fígado",
+      text: "Os anabolizantes em comprimido são feitos para não serem destruídos pelo fígado — mas isso faz com que ele acumule toxinas. Com o tempo, isso pode causar lesões sérias no fígado, que muitas vezes não dão sintomas até estarem avançadas. Exames regulares são fundamentais.",
     });
   }
 
   if (route === "Ambos") {
     msgs.push({
       severity: "danger",
-      title: "Toxicidade hepática composta",
-      text: "Combinar compostos orais e injetáveis potencializa o estresse hepático de forma aditiva. Os 17-alfa alquilados orais já sobrecarregam o fígado individualmente — associados a injetáveis que passam pelo mesmo ciclo metabólico, o risco de lesão hepática grave é consideravelmente elevado.",
+      title: "Dobro de dano no fígado",
+      text: "Misturar anabolizantes orais e injetáveis sobrecarrega o fígado dos dois lados ao mesmo tempo. Os comprimidos já são agressivos por si só — junto com os injetáveis, o risco de lesão hepática grave aumenta consideravelmente.",
     });
   }
 
   if (stacking) {
     msgs.push({
       severity: "danger",
-      title: "Polifarmácia — múltiplos compostos",
-      text: "O uso simultâneo de mais de um anabolizante (stacking) potencializa a supressão do eixo HPT, aumenta o risco cardiovascular com queda de HDL e elevação de LDL, e dificulta identificar qual composto está causando efeitos adversos. A recuperação hormonal pós-ciclo é significativamente mais lenta.",
+      title: "Usar várias substâncias ao mesmo tempo é muito arriscado",
+      text: "Combinar mais de um anabolizante suprime ainda mais a produção natural de hormônios, prejudica o coração (baixa o colesterol bom e sobe o ruim) e dificulta saber qual substância está causando qual problema. A recuperação depois do ciclo também fica muito mais difícil.",
     });
   }
 
   if (months >= 24) {
     msgs.push({
       severity: "warning",
-      title: "Risco de dependência hormonal (TRT)",
-      text: "Após 2 anos ou mais de uso contínuo, a recuperação natural do eixo HPT pode nunca ser completa. Muitos usuários de longo prazo desenvolvem dependência de Terapia de Reposição Hormonal (TRT) permanente, pois o organismo perde a capacidade de produzir testosterona endógena.",
+      title: "Risco de nunca mais produzir testosterona naturalmente",
+      text: "Depois de 2 anos ou mais de uso, o corpo pode perder a capacidade de produzir testosterona sozinho — para sempre. Muitos usuários de longo prazo acabam precisando tomar hormônio artificial pelo resto da vida.",
     });
   }
 
   if (months >= 12 && (route === "Oral" || route === "Ambos")) {
     msgs.push({
       severity: "warning",
-      title: "Lesão hepática cumulativa",
-      text: "Mais de 12 meses de uso de compostos orais aumenta significativamente o risco de lesão hepática cumulativa. A fibrose e alterações histológicas no tecido hepático podem não apresentar sintomas evidentes até estágios avançados da doença.",
+      title: "Dano acumulado no fígado",
+      text: "Mais de 12 meses usando anabolizantes orais aumenta muito o risco de dano permanente no fígado. O problema é que essas lesões costumam não dar sintomas visíveis no começo — quando aparecem, já podem estar em estágio avançado.",
     });
   }
 
   if (frequency !== "Ocasional" && months >= 6) {
     msgs.push({
       severity: "info",
-      title: "Risco cardiovascular",
-      text: "O uso regular de anabolizantes causa dislipidemia (queda do HDL e elevação do LDL), hipertrofia ventricular esquerda e aumento da pressão arterial. Esses fatores combinados elevam o risco de infarto e AVC mesmo em pessoas jovens e aparentemente saudáveis.",
+      title: "Risco para o coração",
+      text: "Usar anabolizantes com regularidade prejudica o colesterol, aumenta a pressão arterial e sobrecarrega o coração. Essa combinação aumenta o risco de infarto e AVC mesmo em pessoas jovens e que parecem saudáveis.",
     });
   }
 
   if (score >= 80) {
     msgs.push({
       severity: "danger",
-      title: "Perfil de risco crítico — busque ajuda",
-      text: "A combinação de fatores inseridos representa um perfil de risco muito elevado. Danos cardiovasculares, hepáticos e hormonais nesse contexto costumam ser permanentes. Se você está nessa situação, buscar acompanhamento médico especializado com endocrinologista ou cardiologista é urgente.",
+      title: "Situação de risco grave",
+      text: "O conjunto de informações que você inseriu indica um risco muito sério à sua saúde. Danos no coração, fígado e sistema hormonal nesse nível costumam ser permanentes. Se você está nessa situação, procure um médico especialista — endocrinologista ou cardiologista — o quanto antes.",
     });
   }
 
