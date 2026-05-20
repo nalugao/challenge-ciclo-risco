@@ -5,6 +5,7 @@
     grid-template-columns: 1fr 1fr;
 }
 
+
 .login_left {
     background: #0a0a0a;
     display: flex;
@@ -13,8 +14,13 @@
     padding: clamp(2rem, 5vw, 4rem);
 }
 
+.logo-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+}
 .login_logo { display: flex; align-items: center; gap: 10px; }
-.login_logo_dot { width: 8px; height: 8px; border-radius: 50%; background: #E24B4A; }
 .login_logo_text { font-size: 15px; font-weight: 600; color: #fff; }
 
 .login_left_headline {

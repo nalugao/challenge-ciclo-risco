@@ -5,7 +5,6 @@ import CardMetrica from '../components/perfilDoUsuario/CardMetrica'
 import CardChart from '../components/perfilDoUsuario/CardChart'
 import CardAlertasExamesInsights from '../components/perfilDoUsuario/CardAlertasExamesInsights'
 import CardExames from '../components/perfilDoUsuario/CardExames'
-// import InsightsCard from '../components/InsightsCard'
 import { MOCK_DATA } from '../data/mockData'
 import '../style/perfil.css'
 
@@ -20,7 +19,7 @@ export default function Perfil() {
                 <div className="content">
                     <div className="page-header">
                         <div>
-                            <h1 className="page-title">Bom dia, {perfil.nome.split(' ')[0]}</h1>
+                            <h1 className="page-title">Olá, {perfil.nome.split(' ')[0]}</h1>
                             <p className="page-sub">
                                 {perfil.idade} anos · Ciclo ativo há {perfil.tempoUso} · {perfil.dosagem}
                             </p>

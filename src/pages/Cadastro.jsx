@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import '../style/login.css'
+import logoIcon from '../assets/favicon.png'
+
 
 export default function Cadastro() {
     const navigate = useNavigate()
@@ -9,7 +11,7 @@ export default function Cadastro() {
 
             <div className="login_left">
                 <div className="login_logo">
-                    <span className="login_logo_dot" />
+                    <img src={logoIcon} alt="Logo" className="logo-icon" />
                     <span className="login_logo_text">Ciclo de Risco</span>
                 </div>
                 <div className="login_left_middle">
