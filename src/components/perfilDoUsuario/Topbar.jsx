@@ -1,10 +1,9 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../../style/navbar.css"
 import logoIcon from '../../assets/favicon.png'
 import logoExit from '../../assets/exit.png'
 
 export default function Topbar() {
-    const navigate = useNavigate()
 
     return (
         <div className="topbar">
