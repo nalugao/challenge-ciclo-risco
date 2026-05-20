@@ -1,8 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import "../../style/navbar.css"
 import logoIcon from '../../assets/favicon.png'
-import logoExit from '../../assets/sair.png'
+import logoExit from '../../assets/exit.png'
 
 export default function Topbar() {
+    const navigate = useNavigate()
+
     return (
         <div className="topbar">
             <div className="logo">
@@ -11,10 +14,10 @@ export default function Topbar() {
             </div>
 
             <div className="nav-right">
-                <div className="topbar-avatar-wrap">
-                    <img src={logoExit} alt="Logo" className="logo-icon" />
-                    <span className="nav-link">Sair</span>
-                </div>
+                <Link className="topbar-exit-link" to="/#">
+                    <span>Sair</span>
+                    <img className="exit-icon" src={logoExit} alt="Sair" className="exit-icon" />
+                </Link>
             </div>
         </div>
     )
