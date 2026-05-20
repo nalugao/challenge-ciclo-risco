@@ -6,7 +6,6 @@ export const MOCK_DATA = {
         dosagem: '500mg/sem',
         esteroides: ['Testosterona Enantato', 'Trembolona', 'Oxandrolona'],
         nivelRisco: 'alto',
-        avatar: 'RM',
         ultimoExame: '12 abr 2025',
     },
 

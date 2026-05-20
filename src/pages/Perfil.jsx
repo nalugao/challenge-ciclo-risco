@@ -1,5 +1,4 @@
 // import { useState } from 'react'
-import Sidebar from '../components/perfilDoUsuario/Sidebar'
 import Topbar from '../components/perfilDoUsuario/Topbar'
 import CardMetrica from '../components/perfilDoUsuario/CardMetrica'
 import CardChart from '../components/perfilDoUsuario/CardChart'
@@ -15,7 +14,6 @@ export default function Perfil() {
         <div className="shell">
             <Topbar perfil={perfil} />
             <div className="main">
-                <Sidebar risco={perfil.nivelRisco} alertasCount={alertas.length} />
                 <div className="content">
                     <div className="page-header">
                         <div>

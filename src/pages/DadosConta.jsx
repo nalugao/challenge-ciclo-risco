@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import '../style/dadosDaConta.css'
 import Topbar from '../components/perfilDoUsuario/Topbar'
-import Sidebar from '../components/perfilDoUsuario/Sidebar'
 
 /* ─── Constants ─── */
 const COMPOSTOS = [
@@ -115,7 +114,6 @@ export default function DadosDaConta() {
 
     const dirty = JSON.stringify(form) !== JSON.stringify(saved)
     const update = (key, val) => setForm(p => ({ ...p, [key]: val }))
-    const initials = `${form.nome[0] || ''}${form.sobrenome[0] || ''}`.toUpperCase()
 
     const showToast = (msg, warn = false) => {
         setToast({ show: true, msg, warn })
@@ -146,13 +144,11 @@ export default function DadosDaConta() {
             
             <Topbar />
 
-            <Sidebar/>
             {/* Page */}
             <div className="dc-page">
 
                 {/* Header */}
                 <div className="dc-header">
-                    <div className="dc-avatar">{initials}</div>
                     <div className="dc-header-info">
                         <h1>
                             {form.nome} {form.sobrenome}
