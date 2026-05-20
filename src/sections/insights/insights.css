@@ -6,8 +6,10 @@
     align-items: center;
     justify-content: center;
     padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 3rem);
-    background-color: white;
+    background-color: #ded9d9;
 }
+
+.titulo_bloco--claro .h2_titulo { color: #1a1a1a; }
 
 .cards_container {
     display: grid;

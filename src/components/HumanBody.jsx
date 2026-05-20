@@ -115,19 +115,7 @@ export default function BodyRiskMap({ className = "", style }) {
     <>
 
       <div className={rootClass} style={style}>
-        {/* Header */}
-        <div className="hbd-header">
-          <div className="hbd-status">
-            <span className="hbd-status-dot" aria-hidden="true" />
-            <span className="hbd-status-label">
-              Esteroides Anabolizantes · Mapa de Riscos
-            </span>
-          </div>
-          <span className="hbd-status-meta">
-            {CONDITIONS.length} sistemas afetados
-          </span>
-        </div>
-
+        
         {/* Body + card */}
         <div className="hbd-content">
           {/* Body diagram */}

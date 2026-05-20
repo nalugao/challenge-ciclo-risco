@@ -1,5 +1,5 @@
 .painel_page {
-    background-color: var(--cor-fundo);
+    background-color: #ded9d9;
     padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 5vw, 3rem);
 }
 
@@ -17,7 +17,7 @@
 }
 
 .titulo_bloco--escuro .h2_titulo { color: #ffffff; }
-
+.titulo_bloco--claro .h2_titulo { color: #1a1a1a; }
 
 /* Tablet */
 @media (max-width: 900px) {
