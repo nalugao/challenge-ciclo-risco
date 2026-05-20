@@ -50,7 +50,7 @@
 
 .dc-topbar-right {
     font-size: 12px;
-    color: #3a3a3a;
+    color: #ded9d9;
 }
 
 .dc-topbar-right strong {
@@ -89,7 +89,7 @@
 }
 
 .dc-header-info h1 {
-    font-size: 19px;
+    font-size: 35px;
     font-weight: 600;
     color: #fff;
     letter-spacing: -.3px;
@@ -102,7 +102,7 @@
 
 .dc-header-info p {
     font-size: 12px;
-    color: #3a3a3a;
+    color: #ded9d9;
 }
 
 /* DIRTY BADGE */
@@ -147,7 +147,7 @@
     align-items: center;
     gap: 7px;
     margin-bottom: 16px;
-    font-size: 10px;
+    font-size: 16px;
     color: #c0392b;
     text-transform: uppercase;
     letter-spacing: .1em;
@@ -165,8 +165,8 @@
 
 .dc-field label {
     display: block;
-    font-size: 10px;
-    color: #3a3a3a;
+    font-size: 13px;
+    color: #ded9d9;
     text-transform: uppercase;
     letter-spacing: .07em;
     font-weight: 600;
@@ -255,7 +255,7 @@
 }
 
 .dc-radio-text {
-    font-size: 11px;
+    font-size: 14px;
     color: #4a4a4a;
 }
 
@@ -276,7 +276,7 @@
     border: 1px solid #1e1e1e;
     background: #111;
     color: #3a3a3a;
-    font-size: 11px;
+    font-size: 14px;
     cursor: pointer;
     transition: all .15s;
 }
@@ -292,7 +292,7 @@
 }
 
 .dc-tag-count {
-    font-size: 11px;
+    font-size: 14px;
     color: #2e2e2e;
     margin-top: 8px;
 }
@@ -333,7 +333,7 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 8px;
+    font-size: 10px;
     color: #fff;
     transition: all .15s;
 }
@@ -344,7 +344,7 @@
 }
 
 .dc-check-text {
-    font-size: 11px;
+    font-size: 14px;
     color: #4a4a4a;
 }
 
@@ -398,7 +398,7 @@
 
 .dc-btn-save {
     background: #1a1a1a;
-    color: #3a3a3a;
+    color: #ded9d9;
     border: none;
     border-radius: 7px;
     padding: 9px 22px;
