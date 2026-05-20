@@ -15,6 +15,18 @@ function calcularDelta(atual, passado) {
   return `${sinal}${diff.toFixed(0)}% vs. mar`
 }
 
+const perfil = {
+  nome: 'Rafael Mendes',
+  idade: 28,
+  sexo: 'masculino',
+  tempoUso: '14 meses',
+  dosagem: '500mg/sem',
+  esteroides: ['Testosterona Enantato', 'Trembolona', 'Oxandrolona'],
+  nivelRisco: 'alto',
+  avatar: 'RM',
+  ultimoExame: '12 abr 2025',
+}
+
 const chartData = {
   meses: ['Jan', 'Fev', 'Mar', 'Abr'],
 
@@ -362,46 +374,189 @@ function gerarMetricas(chartData) {
   ]
 }
 
+function gerarAlertas(chartData, perfil) {
+  const alertas = []
+
+  const ultimoCardio = ultimo(chartData.cardiovascular.exames)
+  const ultimoHepatico = ultimo(chartData.hepatico.exames)
+  const ultimoEndocrino = ultimo(chartData.endocrino.exames)
+  const ultimoHematologico = ultimo(chartData.hematologico.exames)
+  const ultimoRenal = ultimo(chartData.renal.exames)
+
+  const adulto = perfil.idade >= 20
+  const masculino = perfil.sexo === 'masculino'
+
+  const hdlMin = adulto ? 40 : 45
+  const ldlAlto = 160
+  const ldlMuitoAlto = 190
+
+  if (ultimoCardio.ldl >= ldlMuitoAlto || ultimoCardio.hdl < hdlMin) {
+    alertas.push({
+      id: 'cardio-ldl-hdl',
+      nivel: 'alto',
+      titulo: 'Risco cardiovascular',
+      descricao: `LDL em ${ultimoCardio.ldl} mg/dL e HDL em ${ultimoCardio.hdl} mg/dL.`,
+    })
+  } else if (ultimoCardio.ldl >= ldlAlto) {
+    alertas.push({
+      id: 'cardio-ldl',
+      nivel: 'atencao',
+      titulo: 'Atenção cardiovascular',
+      descricao: `LDL em ${ultimoCardio.ldl} mg/dL, acima da faixa ideal.`,
+    })
+  }
+
+  if (ultimoCardio.pcrUs > 3) {
+    alertas.push({
+      id: 'cardio-pcr',
+      nivel: 'atencao',
+      titulo: 'Inflamação vascular',
+      descricao: `PCR-us em ${ultimoCardio.pcrUs} mg/L, indicando maior risco inflamatório.`,
+    })
+  }
+
+  if (
+    ultimoCardio.pressaoSistolica >= 140 ||
+    ultimoCardio.pressaoDiastolica >= 90
+  ) {
+    alertas.push({
+      id: 'cardio-pressao',
+      nivel: 'alto',
+      titulo: 'Pressão arterial elevada',
+      descricao: `${ultimoCardio.pressaoSistolica}/${ultimoCardio.pressaoDiastolica} mmHg no último registro.`,
+    })
+  }
+
+  const altMax = masculino ? 45 : 34
+  const astMax = 34
+  const ggtMax = masculino ? 64 : 36
+
+  const transaminasesAltas =
+    ultimoHepatico.alt > altMax || ultimoHepatico.ast > astMax
+
+  const ggtAlta = ultimoHepatico.ggt > ggtMax
+
+  if (transaminasesAltas && ggtAlta) {
+    alertas.push({
+      id: 'hepatico-ggt',
+      nivel: 'alto',
+      titulo: 'Sobrecarga hepática',
+      descricao: `ALT ${ultimoHepatico.alt} U/L, AST ${ultimoHepatico.ast} U/L e GGT ${ultimoHepatico.ggt} U/L.`,
+    })
+  } else if (transaminasesAltas) {
+    alertas.push({
+      id: 'hepatico-transaminases',
+      nivel: 'atencao',
+      titulo: 'Transaminases elevadas',
+      descricao: 'ALT/TGP ou AST/TGO elevados com GGT ainda dentro do limite.',
+    })
+  }
+
+  const testosteronaTotalMax = masculino
+    ? perfil.idade > 50
+      ? 674
+      : 803
+    : 50
+
+  const testosteronaLivreMax = masculino ? 640 : 37
+
+  if (
+    ultimoEndocrino.testosteronaTotal > testosteronaTotalMax ||
+    ultimoEndocrino.testosteronaLivre > testosteronaLivreMax
+  ) {
+    alertas.push({
+      id: 'endocrino-testosterona',
+      nivel: 'atencao',
+      titulo: 'Testosterona elevada',
+      descricao: `Testosterona total em ${ultimoEndocrino.testosteronaTotal} ng/dL.`,
+    })
+  }
+
+  const lhMin = masculino ? 0.6 : 1.8
+  const fshMin = masculino ? 0.9 : 3.0
+
+  if (ultimoEndocrino.lh < lhMin && ultimoEndocrino.fsh < fshMin) {
+    alertas.push({
+      id: 'endocrino-eixo',
+      nivel: 'atencao',
+      titulo: 'Supressão hormonal',
+      descricao: `LH ${ultimoEndocrino.lh} IU/L e FSH ${ultimoEndocrino.fsh} IU/L abaixo da referência.`,
+    })
+  }
+
+  if (
+    ultimoEndocrino.glicose > 99 ||
+    ultimoEndocrino.hemoglobinaGlicada > 6.0
+  ) {
+    alertas.push({
+      id: 'endocrino-metabolico',
+      nivel: 'atencao',
+      titulo: 'Atenção metabólica',
+      descricao: `Glicose ${ultimoEndocrino.glicose} mg/dL e HbA1c ${ultimoEndocrino.hemoglobinaGlicada}%.`,
+    })
+  }
+
+  if (ultimoHematologico.hematocrito > 52.4) {
+    alertas.push({
+      id: 'hematologico-hematocrito',
+      nivel: ultimoHematologico.hematocrito >= 55 ? 'alto' : 'atencao',
+      titulo: 'Policitemia secundária',
+      descricao: `Hematócrito em ${ultimoHematologico.hematocrito}%, aumentando risco de sangue viscoso.`,
+    })
+  }
+
+  if (ultimoHematologico.plaquetas > 425) {
+    alertas.push({
+      id: 'hematologico-plaquetas',
+      nivel: 'atencao',
+      titulo: 'Plaquetas elevadas',
+      descricao: `Plaquetas em ${ultimoHematologico.plaquetas} mil/mm³.`,
+    })
+  }
+
+  const creatininaMax = masculino ? 1.25 : 1.11
+  const cistatinaMax = perfil.idade > 50
+    ? masculino ? 1.53 : 1.38
+    : masculino ? 1.22 : 1.07
+
+  if (
+    ultimoRenal.microalbuminuriaCreatinina >= 300 ||
+    ultimoRenal.creatinina > creatininaMax ||
+    ultimoRenal.cistatinaC > cistatinaMax
+  ) {
+    alertas.push({
+      id: 'renal-risco',
+      nivel: 'alto',
+      titulo: 'Risco renal',
+      descricao: `Creatinina ${ultimoRenal.creatinina} mg/dL e microalbuminúria ${ultimoRenal.microalbuminuriaCreatinina} mg/g.`,
+    })
+  } else if (ultimoRenal.microalbuminuriaCreatinina >= 30) {
+    alertas.push({
+      id: 'renal-estresse',
+      nivel: 'atencao',
+      titulo: 'Estresse renal',
+      descricao: `Microalbuminúria em ${ultimoRenal.microalbuminuriaCreatinina} mg/g.`,
+    })
+  }
+
+  if (!alertas.length) {
+    alertas.push({
+      id: 'normal',
+      nivel: 'normal',
+      titulo: 'Nenhum alerta ativo',
+      descricao: 'Os principais marcadores estão dentro das faixas esperadas.',
+    })
+  }
+
+  return alertas
+}
+
 export const MOCK_DATA = {
-  perfil: {
-    nome: 'Rafael Mendes',
-    idade: 28,
-    tempoUso: '14 meses',
-    dosagem: '500mg/sem',
-    esteroides: ['Testosterona Enantato', 'Trembolona', 'Oxandrolona'],
-    nivelRisco: 'alto',
-    avatar: 'RM',
-    ultimoExame: '12 abr 2025',
-  },
+  perfil,
 
   metricas: gerarMetricas(chartData),
 
-  alertas: [
-    {
-      id: 1,
-      nivel: 'alto',
-      titulo: 'Risco cardiovascular',
-      descricao: 'LDL elevado e HDL abaixo do ideal.',
-    },
-    {
-      id: 2,
-      nivel: 'alto',
-      titulo: 'Sobrecarga hepática',
-      descricao: 'TGO/TGP acima do limite superior.',
-    },
-    {
-      id: 3,
-      nivel: 'atencao',
-      titulo: 'Supressão hormonal',
-      descricao: 'Eixo hormonal possivelmente comprometido.',
-    },
-    {
-      id: 4,
-      nivel: 'atencao',
-      titulo: 'Policitemia secundária',
-      descricao: 'Hematócrito elevado pode aumentar risco trombótico.',
-    },
-  ],
+  alertas: gerarAlertas(chartData, perfil),
 
   exames: [
     {
