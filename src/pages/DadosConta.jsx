@@ -15,7 +15,7 @@ const CONDICOES = [
 
 /* ─── Initial state (mirrors onboarding) ─── */
 const INITIAL = {
-    nome: 'Natalia Lugao', sobrenome: 'Mendonça', idade: '26', sexo: 'Feminino',
+    nome: 'Natalia', sobrenome: 'Lugao', idade: '26', sexo: 'Feminino',
     peso: '60', altura: '158',
     cicloAtivo: 'sim',
     compostos: ['Testosterona Enantato', 'Stanozolol'],
