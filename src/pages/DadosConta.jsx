@@ -18,7 +18,7 @@ const INITIAL = {
     nome: 'Natalia', sobrenome: 'Lugao', idade: '26', sexo: 'Feminino',
     peso: '60', altura: '158',
     cicloAtivo: 'sim',
-    compostos: ['Testosterona Enantato', 'Stanozolol'],
+    compostos: ['Testosterona Enantato', 'Trembolona', 'Oxandrolona'],
     dosagem: '500', tempoUso: 'Mais de 12 meses',
     fezeExames: 'recentes',
     condicoes: ['Colesterol elevado'],
@@ -309,7 +309,7 @@ export default function DadosDaConta() {
                     {/* Save bar — full width */}
                     <div className="dc-save-bar dc-full">
                         <div className="dc-save-info">
-                            Última atualização: <span>12 abr 2025 às 14:32</span>
+                            Última atualização: <span>20 de maio</span>
                         </div>
                         <div className="dc-save-actions">
                             {dirty && (
