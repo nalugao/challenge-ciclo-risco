@@ -11,78 +11,15 @@ import {
   Legend,
 } from 'recharts'
 
+import { MOCK_DATA } from '../../../data/mockData'
+
 const paciente = {
   sexo: 'masculino',
   idade: 24,
   jejum12h: true,
 }
 
-const examesCardio = [
-  {
-    data: 'Jan',
-    hdl: 48,
-    ldl: 92,
-    naoHdl: 118,
-    vldl: 22,
-    triglicerides: 110,
-    pcrUs: 0.8,
-    apoA1: 145,
-    apoB: 88,
-    homocisteina: 9.4,
-    ntProBnp: 80,
-    lpa: 22,
-    pressaoSistolica: 118,
-    pressaoDiastolica: 76,
-  },
-  {
-    data: 'Fev',
-    hdl: 38,
-    ldl: 128,
-    naoHdl: 158,
-    vldl: 30,
-    triglicerides: 148,
-    pcrUs: 1.9,
-    apoA1: 132,
-    apoB: 112,
-    homocisteina: 11.2,
-    ntProBnp: 96,
-    lpa: 25,
-    pressaoSistolica: 124,
-    pressaoDiastolica: 82,
-  },
-  {
-    data: 'Mar',
-    hdl: 31,
-    ldl: 168,
-    naoHdl: 196,
-    vldl: 38,
-    triglicerides: 190,
-    pcrUs: 3.4,
-    apoA1: 110,
-    apoB: 138,
-    homocisteina: 14.6,
-    ntProBnp: 132,
-    lpa: 28,
-    pressaoSistolica: 136,
-    pressaoDiastolica: 88,
-  },
-  {
-    data: 'Abr',
-    hdl: 25,
-    ldl: 196,
-    naoHdl: 235,
-    vldl: 46,
-    triglicerides: 230,
-    pcrUs: 4.8,
-    apoA1: 92,
-    apoB: 162,
-    homocisteina: 16.1,
-    ntProBnp: 158,
-    lpa: 33,
-    pressaoSistolica: 145,
-    pressaoDiastolica: 94,
-  },
-]
+const examesCardio = MOCK_DATA.chartData?.cardiovascular?.exames || []
 
 function getLimitesCardio(idade, sexo, jejum12h) {
   const adulto = idade >= 20
@@ -90,44 +27,22 @@ function getLimitesCardio(idade, sexo, jejum12h) {
 
   return {
     hdlMin: adulto ? 40 : 45,
-
     ldlMetaAltoRisco: 70,
-    ldlMaxAdolescente: 110,
     ldlAltoMin: 160,
     ldlMuitoAltoMin: 190,
-
     naoHdlMetaAdultoAltoRisco: 100,
-    naoHdlMetaAdolescente: 120,
-    naoHdlAdultoOtimo: 130,
     naoHdlAdultoAlto: 160,
-    naoHdlAdultoMuitoAlto: 190,
-
-    vldlMax: adulto
-      ? jejum12h ? 30 : 35
-      : jejum12h ? 18 : 20,
-
-    trigliceridesMax: adulto
-      ? jejum12h ? 150 : 175
-      : jejum12h ? 90 : 100,
-
-    pcrBaixoMax: 1,
+    vldlMax: adulto ? (jejum12h ? 30 : 35) : jejum12h ? 18 : 20,
+    trigliceridesMax: adulto ? (jejum12h ? 150 : 175) : jejum12h ? 90 : 100,
     pcrIntermediarioMax: 3,
-
     apoA1Min: masculino ? 95 : 101,
     apoA1Max: masculino ? 185 : 223,
-
     apoBMin: masculino ? 49 : 53,
     apoBMax: masculino ? 173 : 182,
-
     homocisteinaMin: 3.7,
     homocisteinaMax: 13.9,
-
     ntProBnpRisco: 125,
-
     lpaMax: 30,
-
-    pressaoAlertaSistolica: 120,
-    pressaoAlertaDiastolica: 80,
     pressaoAltaSistolica: 140,
     pressaoAltaDiastolica: 90,
   }
@@ -148,6 +63,7 @@ function calcularRiscoCardio(exame, idade, sexo, jejum12h) {
   if (exame.homocisteina > limites.homocisteinaMax) pontos += 1
   if (exame.ntProBnp > limites.ntProBnpRisco) pontos += 2
   if (exame.lpa > limites.lpaMax) pontos += 1
+
   if (
     exame.pressaoSistolica >= limites.pressaoAltaSistolica ||
     exame.pressaoDiastolica >= limites.pressaoAltaDiastolica
@@ -162,8 +78,7 @@ function calcularRiscoCardio(exame, idade, sexo, jejum12h) {
   if (exame.hdl < limites.hdlMin || exame.ldl >= limites.ldlAltoMin) {
     status = 'Atenção cardiovascular'
     classe = 'alerta'
-    insight =
-      'HDL baixo ou LDL elevado aumentam o risco cardiovascular, especialmente em usuários de esteroides.'
+    insight = 'HDL baixo ou LDL elevado aumentam o risco cardiovascular.'
   }
 
   if (exame.pcrUs > limites.pcrIntermediarioMax) {
@@ -205,6 +120,19 @@ function TooltipCardio({ active, payload, label }) {
 
 export default function RiscoCardiovascularChart() {
   const [abaAtiva, setAbaAtiva] = useState('lipidico')
+
+  if (!examesCardio.length) {
+    return (
+      <div className="chart-hepatico">
+        <div className="chart-header">
+          <div>
+            <h3>Risco Cardiovascular</h3>
+            <p>Nenhum dado cardiovascular encontrado no MOCK_DATA.</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   const ultimoExame = examesCardio[examesCardio.length - 1]
 
@@ -433,7 +361,10 @@ export default function RiscoCardiovascularChart() {
             <span>PCR-us alto risco: &gt; 3 mg/L</span>
             <span>Apo-A1: {limites.apoA1Min}–{limites.apoA1Max} mg/dL</span>
             <span>Apo-B: {limites.apoBMin}–{limites.apoBMax} mg/dL</span>
-            <span>Homocisteína: {limites.homocisteinaMin}–{limites.homocisteinaMax} µmol/L</span>
+            <span>
+              Homocisteína: {limites.homocisteinaMin}–
+              {limites.homocisteinaMax} µmol/L
+            </span>
             <span>NT-proBNP risco: &gt; {limites.ntProBnpRisco} pg/mL</span>
             <span>LP(a): até {limites.lpaMax} mg/dL</span>
           </>

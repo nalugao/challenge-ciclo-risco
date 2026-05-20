@@ -10,51 +10,15 @@ import {
   Legend,
 } from 'recharts'
 
+import { MOCK_DATA } from '../../../data/mockData'
 import '../../../style/perfil.css'
 
 const paciente = {
-  sexo: 'masculino', // masculino ou feminino
+  sexo: 'masculino',
   idade: 24,
 }
 
-const examesHepaticos = [
-  {
-    data: 'Jan',
-    alt: 38,
-    ast: 29,
-    ggt: 22,
-    alp: 78,
-    bilirrubinaTotal: 0.8,
-    albumina: 4.5,
-  },
-  {
-    data: 'Fev',
-    alt: 52,
-    ast: 48,
-    ggt: 31,
-    alp: 88,
-    bilirrubinaTotal: 1.0,
-    albumina: 4.3,
-  },
-  {
-    data: 'Mar',
-    alt: 76,
-    ast: 69,
-    ggt: 42,
-    alp: 94,
-    bilirrubinaTotal: 1.1,
-    albumina: 4.1,
-  },
-  {
-    data: 'Abr',
-    alt: 96,
-    ast: 88,
-    ggt: 78,
-    alp: 130,
-    bilirrubinaTotal: 1.5,
-    albumina: 3.3,
-  },
-]
+const examesHepaticos = MOCK_DATA.chartData?.hepatico?.exames || []
 
 function getLimites(sexo) {
   const masculino = sexo === 'masculino'
@@ -137,6 +101,19 @@ function TooltipCustomizado({ active, payload, label }) {
 }
 
 export default function RiscoHepaticoChart() {
+  if (!examesHepaticos.length) {
+    return (
+      <div className="chart-hepatico">
+        <div className="chart-header">
+          <div>
+            <h3>Risco Hepático</h3>
+            <p>Nenhum dado hepático encontrado no MOCK_DATA.</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const ultimoExame = examesHepaticos[examesHepaticos.length - 1]
   const riscoAtual = calcularRisco(ultimoExame, paciente.sexo)
   const limites = getLimites(paciente.sexo)
@@ -162,8 +139,10 @@ export default function RiscoHepaticoChart() {
 
           <YAxis domain={[0, 160]} />
 
-<Tooltip content={<TooltipCustomizado />} />
+          <Tooltip content={<TooltipCustomizado />} />
+
           <Legend />
+
           <ReferenceArea
             y1={0}
             y2={limites.altMax}

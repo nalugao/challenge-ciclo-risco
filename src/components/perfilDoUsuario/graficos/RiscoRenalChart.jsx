@@ -10,45 +10,14 @@ import {
   Legend,
 } from 'recharts'
 
+import { MOCK_DATA } from '../../../data/mockData'
+
 const paciente = {
   sexo: 'masculino',
   idade: 24,
 }
 
-const examesRenais = [
-  {
-    data: 'Jan',
-    cistatinaC: 0.82,
-    creatinina: 0.96,
-    ureia: 32,
-    microalbuminuriaCreatinina: 18,
-    proteinuriaCreatinina: 0.12,
-  },
-  {
-    data: 'Fev',
-    cistatinaC: 1.05,
-    creatinina: 1.14,
-    ureia: 41,
-    microalbuminuriaCreatinina: 28,
-    proteinuriaCreatinina: 0.18,
-  },
-  {
-    data: 'Mar',
-    cistatinaC: 1.28,
-    creatinina: 1.36,
-    ureia: 57,
-    microalbuminuriaCreatinina: 74,
-    proteinuriaCreatinina: 0.26,
-  },
-  {
-    data: 'Abr',
-    cistatinaC: 1.48,
-    creatinina: 1.58,
-    ureia: 68,
-    microalbuminuriaCreatinina: 325,
-    proteinuriaCreatinina: 0.38,
-  },
-]
+const examesRenais = MOCK_DATA.chartData?.renal?.exames || []
 
 function getLimitesRenais(sexo, idade) {
   const masculino = sexo === 'masculino'
@@ -56,12 +25,20 @@ function getLimitesRenais(sexo, idade) {
 
   return {
     cistatinaMin: maior50
-      ? masculino ? 0.72 : 0.64
-      : masculino ? 0.60 : 0.57,
+      ? masculino
+        ? 0.72
+        : 0.64
+      : masculino
+        ? 0.60
+        : 0.57,
 
     cistatinaMax: maior50
-      ? masculino ? 1.53 : 1.38
-      : masculino ? 1.22 : 1.07,
+      ? masculino
+        ? 1.53
+        : 1.38
+      : masculino
+        ? 1.22
+        : 1.07,
 
     creatininaMin: masculino ? 0.72 : 0.57,
     creatininaMax: masculino ? 1.25 : 1.11,
@@ -88,13 +65,18 @@ function calcularRiscoRenal(exame, sexo, idade) {
   if (exame.microalbuminuriaCreatinina >= 30) pontos += 2
   if (exame.microalbuminuriaCreatinina >= 300) pontos += 3
 
-  if (exame.proteinuriaCreatinina > limites.proteinuriaCreatininaMax) pontos += 2
+  if (exame.proteinuriaCreatinina > limites.proteinuriaCreatininaMax) {
+    pontos += 2
+  }
 
   let status = 'Normal'
   let classe = 'normal'
   let insight = 'Marcadores renais dentro da faixa esperada.'
 
-  if (exame.microalbuminuriaCreatinina >= 30 && exame.microalbuminuriaCreatinina < 300) {
+  if (
+    exame.microalbuminuriaCreatinina >= 30 &&
+    exame.microalbuminuriaCreatinina < 300
+  ) {
     status = 'Estresse renal'
     classe = 'alerta'
     insight =
@@ -144,7 +126,21 @@ function TooltipRenal({ active, payload, label }) {
 }
 
 export default function RiscoRenalChart() {
+  if (!examesRenais.length) {
+    return (
+      <div className="chart-hepatico">
+        <div className="chart-header">
+          <div>
+            <h3>Risco Renal</h3>
+            <p>Nenhum dado renal encontrado no MOCK_DATA.</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const ultimoExame = examesRenais[examesRenais.length - 1]
+
   const riscoAtual = calcularRiscoRenal(
     ultimoExame,
     paciente.sexo,
@@ -251,9 +247,18 @@ export default function RiscoRenalChart() {
       </div>
 
       <div className="limites-hepaticos">
-        <span>Cistatina C: {limites.cistatinaMin}–{limites.cistatinaMax} mg/L</span>
-        <span>Creatinina: {limites.creatininaMin}–{limites.creatininaMax} mg/dL</span>
-        <span>Ureia: {limites.ureiaMin}–{limites.ureiaMax} mg/dL</span>
+        <span>
+          Cistatina C: {limites.cistatinaMin}–{limites.cistatinaMax} mg/L
+        </span>
+
+        <span>
+          Creatinina: {limites.creatininaMin}–{limites.creatininaMax} mg/dL
+        </span>
+
+        <span>
+          Ureia: {limites.ureiaMin}–{limites.ureiaMax} mg/dL
+        </span>
+
         <span>Microalbuminúria normal: &lt; 30 mg/g</span>
         <span>Macroalbuminúria: ≥ 300 mg/g</span>
       </div>
