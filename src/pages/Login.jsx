@@ -22,18 +22,7 @@ export default function Login() {
                     </p>
                 </div>
                 <div className="login_left_stats">
-                    <div className="stat_item">
-                        <p>3,3%</p>
-                        <p>usam esteroides</p>
-                    </div>
-                    <div className="stat_item">
-                        <p>2–3x</p>
-                        <p>risco cardiovascular</p>
-                    </div>
-                    <div className="stat_item">
-                        <p>78%</p>
-                        <p>mortes entre 20–39 anos</p>
-                    </div>
+                    
                 </div>
             </div>
 

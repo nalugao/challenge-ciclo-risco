@@ -23,18 +23,7 @@ export default function Cadastro() {
                     </p>
                 </div>
                 <div className="login_left_stats">
-                    <div className="stat_item">
-                        <p>3,3%</p>
-                        <p>usam esteroides</p>
-                    </div>
-                    <div className="stat_item">
-                        <p>2–3x</p>
-                        <p>risco cardiovascular</p>
-                    </div>
-                    <div className="stat_item">
-                        <p>78%</p>
-                        <p>mortes entre 20–39 anos</p>
-                    </div>
+                    
                 </div>
             </div>
 
@@ -43,10 +32,7 @@ export default function Cadastro() {
                     <p className="login_card_title">Criar conta</p>
                     <p className="login_card_sub">Preencha seus dados para começar.</p>
 
-                    <div className="field">
-                        <label>Nome completo</label>
-                        <input type="text" placeholder="Seu nome" />
-                    </div>
+                    
                     <div className="field">
                         <label>E-mail</label>
                         <input type="email" placeholder="seu@email.com" />

@@ -7,7 +7,7 @@ import { MOCK_DATA } from '../data/mockData'
 import '../style/perfil.css'
 
 export default function Perfil() {
-    const { perfil, metricas, alertas, exames } = MOCK_DATA
+    const { perfil, metricas, alertas } = MOCK_DATA
 
     return (
         <div className="shell">
