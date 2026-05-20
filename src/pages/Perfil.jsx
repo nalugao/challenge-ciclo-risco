@@ -43,7 +43,6 @@ export default function Perfil() {
 
                     <div className="bottom-grid">
                         <CardExames exames={exames} />
-                        {/* <InsightsCard insights={insights} /> */}
                     </div>
                 </div>
             </div>

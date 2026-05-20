@@ -6,7 +6,8 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Perfil from './pages/Perfil'
 import Onboarding from './pages/Onboarding'
-
+import HistoricoExames from './pages/HistoricoExames'
+import DadosConta from './pages/DadosConta'
 
 export default function App() {
     return (
@@ -22,7 +23,8 @@ export default function App() {
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/onboarding" element={<Onboarding />} />
-
+            <Route path="/historico" element={<HistoricoExames />} />
+            <Route path="/conta" element={<DadosConta />} />
         </Routes>
     )
 }

@@ -1,0 +1,463 @@
+/* ─── DadosDaConta.css ─── */
+
+.dc-wrap {
+    background: #080808;
+    min-height: 100vh;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: #e2e2e2;
+    
+}
+
+/* TOP BAR */
+.dc-topbar {
+    border-bottom: 1px solid #111;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #0a0a0a;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.dc-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dc-logo-mark {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #c0392b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dc-logo-mark svg {
+    width: 12px;
+    height: 12px;
+}
+
+.dc-logo-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.dc-topbar-right {
+    font-size: 12px;
+    color: #3a3a3a;
+}
+
+.dc-topbar-right strong {
+    color: #888;
+}
+
+/* PAGE */
+.dc-page {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 32px 32px 80px;
+}
+
+/* PAGE HEADER */
+.dc-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 28px;
+}
+
+.dc-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 13px;
+    background: #1a0808;
+    border: 1.5px solid #2a0f0f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: 700;
+    color: #c0392b;
+    flex-shrink: 0;
+    letter-spacing: 1px;
+}
+
+.dc-header-info h1 {
+    font-size: 19px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -.3px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.dc-header-info p {
+    font-size: 12px;
+    color: #3a3a3a;
+}
+
+/* DIRTY BADGE */
+.dc-dirty-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    background: #1a1000;
+    border: 1px solid #3a2000;
+    color: #e67e22;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* GRID */
+.dc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.dc-full {
+    grid-column: 1 / -1;
+}
+
+/* SECTION */
+.dc-section {
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    padding: 18px 20px;
+}
+
+.dc-section--accent {
+    border-top: 2px solid #c0392b;
+}
+
+.dc-section-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 16px;
+    font-size: 10px;
+    color: #c0392b;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-weight: 700;
+}
+
+/* FIELD */
+.dc-field {
+    margin-bottom: 13px;
+}
+
+.dc-field:last-child {
+    margin-bottom: 0;
+}
+
+.dc-field label {
+    display: block;
+    font-size: 10px;
+    color: #3a3a3a;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.dc-field input,
+.dc-field select {
+    width: 100%;
+    background: #111;
+    border: 1px solid #1e1e1e;
+    border-radius: 7px;
+    padding: 9px 12px;
+    font-size: 13px;
+    color: #e2e2e2;
+    outline: none;
+    font-family: inherit;
+    appearance: none;
+    transition: border-color .15s;
+    box-sizing: border-box;
+}
+
+.dc-field input:focus,
+.dc-field select:focus {
+    border-color: #c0392b;
+}
+
+.dc-field input::placeholder {
+    color: #2e2e2e;
+}
+
+.dc-row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 11px;
+}
+
+/* RADIO */
+.dc-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dc-radio-opt {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid #1e1e1e;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.dc-radio-opt:hover {
+    border-color: #2e2e2e;
+}
+
+.dc-radio-opt--sel {
+    border-color: #c0392b;
+    background: #1a0a0a;
+}
+
+.dc-radio-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    border: 1.5px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color .15s;
+}
+
+.dc-radio-opt--sel .dc-radio-dot {
+    border-color: #c0392b;
+}
+
+.dc-radio-inner {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #c0392b;
+}
+
+.dc-radio-text {
+    font-size: 11px;
+    color: #4a4a4a;
+}
+
+.dc-radio-opt--sel .dc-radio-text {
+    color: #ccc;
+}
+
+/* TAGS */
+.dc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.dc-tag {
+    padding: 5px 11px;
+    border-radius: 5px;
+    border: 1px solid #1e1e1e;
+    background: #111;
+    color: #3a3a3a;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.dc-tag:hover {
+    border-color: #2e2e2e;
+}
+
+.dc-tag--sel {
+    background: #1a0a0a;
+    border-color: #c0392b;
+    color: #c0392b;
+}
+
+.dc-tag-count {
+    font-size: 11px;
+    color: #2e2e2e;
+    margin-top: 8px;
+}
+
+/* CHECKS */
+.dc-check-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.dc-check-opt {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    border: 1px solid #1e1e1e;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .15s;
+}
+
+.dc-check-opt:hover {
+    border-color: #2e2e2e;
+}
+
+.dc-check-opt--sel {
+    border-color: #c0392b;
+    background: #1a0a0a;
+}
+
+.dc-check-box {
+    width: 13px;
+    height: 13px;
+    border-radius: 3px;
+    border: 1.5px solid #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 8px;
+    color: #fff;
+    transition: all .15s;
+}
+
+.dc-check-opt--sel .dc-check-box {
+    border-color: #c0392b;
+    background: #c0392b;
+}
+
+.dc-check-text {
+    font-size: 11px;
+    color: #4a4a4a;
+}
+
+.dc-check-opt--sel .dc-check-text {
+    color: #ccc;
+}
+
+/* SAVE BAR */
+.dc-save-bar {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background: #0f0f0f;
+    border: 1px solid #1a1a1a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dc-save-info {
+    font-size: 11px;
+    color: #2a2a2a;
+}
+
+.dc-save-info span {
+    color: #444;
+}
+
+.dc-save-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.dc-btn-discard {
+    background: none;
+    border: 1px solid #1e1e1e;
+    color: #4a4a4a;
+    border-radius: 7px;
+    padding: 8px 16px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all .15s;
+}
+
+.dc-btn-discard:hover {
+    border-color: #2e2e2e;
+    color: #888;
+}
+
+.dc-btn-save {
+    background: #1a1a1a;
+    color: #3a3a3a;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 22px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: default;
+    font-family: inherit;
+    transition: all .2s;
+    min-width: 148px;
+    text-align: center;
+}
+
+.dc-btn-save--active {
+    background: #c0392b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.dc-btn-save--active:hover {
+    opacity: .88;
+}
+
+.dc-btn-save--saving {
+    opacity: .65;
+}
+
+/* TOAST */
+.dc-toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 999;
+    background: #161616;
+    border: 1px solid #2a2a2a;
+    border-radius: 9px;
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 13px;
+    color: #ccc;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.dc-toast--show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.dc-toast-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #27ae60;
+    flex-shrink: 0;
+}
+
+.dc-toast-dot--warn {
+    background: #e67e22;
+}
